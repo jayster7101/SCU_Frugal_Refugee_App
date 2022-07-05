@@ -14,11 +14,11 @@ class bottomBar extends StatefulWidget {
 }
 
 class _bottomBarState extends State<bottomBar> {
-  int selected_Index = 0;
-  List<Widget> _widgetOptions = <Widget>[
-    _MainScreen(),
-    Fart(),
-    Random(),
+  int selectedIndex = 0;
+  final List<Widget> _widgetOptions = <Widget>[
+    const _MainScreen(),
+    const Fart(),
+    const Random(),
 
   ];
   @override
@@ -26,9 +26,9 @@ class _bottomBarState extends State<bottomBar> {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.black,
-        unselectedLabelStyle:  TextStyle(color: Colors.white),
-        selectedLabelStyle: TextStyle(color: Colors.red),
-        items: [
+        unselectedLabelStyle:  const TextStyle(color: Colors.white),
+        selectedLabelStyle: const TextStyle(color: Colors.red),
+        items: const [
           BottomNavigationBarItem(
               icon: Icon( Icons.home, color: Colors.white,),
               label: "Home"),
@@ -40,12 +40,12 @@ class _bottomBarState extends State<bottomBar> {
         onTap: (index) {
           setState(() {
             print(index);
-            selected_Index = index;
+            selectedIndex = index;
             
           });
         },
       ),
-      body: _widgetOptions.elementAt(selected_Index),
+      body: _widgetOptions.elementAt(selectedIndex),
     );
   }
 }
@@ -55,7 +55,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: bottomBar());
+    return const MaterialApp(home: bottomBar());
   }
 }
 
@@ -96,7 +96,7 @@ class __MainScreenState extends State<_MainScreen> {
       appBar: AppBar(
           title: const Text("Welcome"),
           centerTitle: true,
-          shape: RoundedRectangleBorder(
+          shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(bottom: Radius.circular(12)),
           )),
       body: Center(
@@ -112,24 +112,24 @@ class __MainScreenState extends State<_MainScreen> {
                     ElevatedButton(
                       style: 
                       ElevatedButton.styleFrom(
-                        padding: EdgeInsets.fromLTRB(60, 35, 60, 35),
+                        padding: const EdgeInsets.fromLTRB(60, 35, 60, 35),
                         primary: Colors.grey
                         ),  
                       onPressed: () {
                         print("Button 1 ");
                       },
-                      child: Icon(Icons.newspaper,color: Colors.black,size: 45,),
+                      child: const Icon(Icons.newspaper,color: Colors.black,size: 45,),
                     ),
                     ElevatedButton(
                       style:
                         ElevatedButton.styleFrom(
-                          padding: EdgeInsets.fromLTRB(60, 35, 60, 35),
+                          padding: const EdgeInsets.fromLTRB(60, 35, 60, 35),
                           primary: Colors.grey
                         ),
                       onPressed: () {
                         print("Button 1 ");
                       },
-                      child: Icon(Icons.medical_services,color: Colors.black,size: 45,),
+                      child: const Icon(Icons.medical_services,color: Colors.black,size: 45,),
                     )
                   ],
                 ),
@@ -139,24 +139,24 @@ class __MainScreenState extends State<_MainScreen> {
                     ElevatedButton(
                       style:
                       ElevatedButton.styleFrom(
-                        padding: EdgeInsets.fromLTRB(60, 35, 60, 35),
+                        padding: const EdgeInsets.fromLTRB(60, 35, 60, 35),
                         primary: Colors.grey
                         ),  
                       onPressed: () {
                         print("Button 1 ");
                       },
-                      child: Icon(Icons.shopping_bag,color: Colors.black,size: 45,),
+                      child: const Icon(Icons.shopping_bag,color: Colors.black,size: 45,),
                     ),
                     ElevatedButton(
                       style:
                       ElevatedButton.styleFrom(
-                        padding: EdgeInsets.fromLTRB(60, 35, 60, 35),
+                        padding: const EdgeInsets.fromLTRB(60, 35, 60, 35),
                         primary: Colors.grey
                         ),  
                       onPressed: () {
                         print("Button 1 ");
                       },
-                      child: Icon(Icons.menu_book,color: Colors.black,size: 45,)
+                      child: const Icon(Icons.menu_book,color: Colors.black,size: 45,)
                     )
                   ],
                 ),
@@ -166,25 +166,25 @@ class __MainScreenState extends State<_MainScreen> {
                     ElevatedButton(
                       style:
                         ElevatedButton.styleFrom(
-                          padding: EdgeInsets.fromLTRB(60, 35, 60, 35),
+                          padding: const EdgeInsets.fromLTRB(60, 35, 60, 35),
                           primary: Colors.grey
                         ),
                       onPressed: () {
                         print("Button 1 ");
                       },
                       
-                      child: Icon(Icons.translate,color: Colors.black,size: 45,),
+                      child: const Icon(Icons.translate,color: Colors.black,size: 45,),
                     ),
                     ElevatedButton(
                       style:
                         ElevatedButton.styleFrom(
-                          padding: EdgeInsets.fromLTRB(60, 35, 60, 35),
+                          padding: const EdgeInsets.fromLTRB(60, 35, 60, 35),
                           primary: Colors.grey
                         ),  
                       onPressed: () {
                         print("Button 1 ");
                       },
-                      child: Icon(Icons.shopping_bag,color:Colors.black,size: 45,),
+                      child: const Icon(Icons.shopping_bag,color:Colors.black,size: 45,),
                     )
                   ],
                 ),
@@ -201,7 +201,7 @@ class Random extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Text("Hello world"),
+      child: const Text("Hello world"),
     );
   }
 }
@@ -212,7 +212,7 @@ class Fart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Text("Fart"),
+      child: const Text("Fart"),
     );
   }
 }
