@@ -50,7 +50,7 @@ class _bottomBarState extends State<bottomBar> {
           });
         },
       ),
-      body: _widgetOptions.elementAt(selectedIndex),
+      body: _widgetOptions.elementAt(selected_Index),
     );
   }
 }
