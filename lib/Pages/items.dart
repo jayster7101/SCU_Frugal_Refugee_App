@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'services/itemslist.dart';
 
 class Items extends StatefulWidget {
   const Items({Key? key}) : super(key: key);
@@ -8,15 +9,18 @@ class Items extends StatefulWidget {
 }
 
 class _ItemsState extends State<Items> {
+  ItemsList list = ItemsList();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Items"),
         centerTitle: true,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(bottom: Radius.circular(12)),
-        )
+      ),
+      body: Center(
+        child: ListView(
+          children: list.getList(),
+        ),
       ),
     );
   }
