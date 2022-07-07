@@ -50,7 +50,7 @@ class _bottomBarState extends State<bottomBar> {
           });
         },
       ),
-      body: _widgetOptions.elementAt(selected_Index),
+      body: _widgetOptions.elementAt(selectedIndex),
     );
   }
 }
@@ -60,7 +60,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: bottomBar());
+    return const MaterialApp(home: bottomBar());
   }
 }
 
@@ -220,7 +220,7 @@ class Random extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Text("Hello world"),
+      child: const Text("Hello world"),
     );
   }
 }
