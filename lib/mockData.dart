@@ -1,3 +1,4 @@
+//class for a car
 class car {
   Car(String name) {}
   String name = "";
@@ -8,6 +9,7 @@ class car {
     "Air intake",
     "Headers"
   ];
+  // simple constructor Car(this.name, this.number_of_doors, this.possible_upgrades);
 
   String name_of_car() {
     return name;

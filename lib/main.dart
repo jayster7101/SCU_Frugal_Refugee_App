@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'mockData.dart';
+import 'Pages/Health.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,34 +15,38 @@ class bottomBar extends StatefulWidget {
 }
 
 class _bottomBarState extends State<bottomBar> {
-  int selectedIndex = 0;
-  final List<Widget> _widgetOptions = <Widget>[
-    const _MainScreen(),
-    const Fart(),
-    const Random(),
-
+  int selected_Index = 0;
+  List<Widget> _widgetOptions = <Widget>[
+    _MainScreen(),
+    Profile(),
   ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        unselectedItemColor: Colors.white,
+        selectedItemColor: Colors.white,
         backgroundColor: Colors.black,
-        unselectedLabelStyle:  const TextStyle(color: Colors.white),
-        selectedLabelStyle: const TextStyle(color: Colors.red),
-        items: const [
+        items: [
           BottomNavigationBarItem(
-              icon: Icon( Icons.home, color: Colors.white,),
+              icon: Icon(
+                Icons.home,
+                color: Colors.white,
+              ),
               label: "Home"),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person, color: Colors.white,),
+            icon: Icon(
+              Icons.person,
+              color: Colors.white,
+            ),
             label: "Person",
           ),
         ],
         onTap: (index) {
           setState(() {
             print(index);
-            selectedIndex = index;
-            
+            selected_Index = index;
           });
         },
       ),
@@ -104,32 +109,40 @@ class __MainScreenState extends State<_MainScreen> {
           padding: const EdgeInsets.all(8.0),
           child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
-              
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     ElevatedButton(
-                      style: 
-                      ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.fromLTRB(60, 35, 60, 35),
-                        primary: Colors.grey
-                        ),  
+                      style: ElevatedButton.styleFrom(
+                          padding: const EdgeInsets.fromLTRB(60, 35, 60, 35),
+                          primary: Colors.grey),
                       onPressed: () {
                         print("Button 1 ");
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Health()));
+                       // Navigator.pop(context);
                       },
-                      child: const Icon(Icons.newspaper,color: Colors.black,size: 45,),
+                      child: Icon(
+                        Icons.newspaper,
+                        color: Colors.black,
+                        size: 45,
+                      ),
                     ),
                     ElevatedButton(
-                      style:
-                        ElevatedButton.styleFrom(
-                          padding: const EdgeInsets.fromLTRB(60, 35, 60, 35),
-                          primary: Colors.grey
-                        ),
+                      style: ElevatedButton.styleFrom(
+                          padding: EdgeInsets.fromLTRB(60, 35, 60, 35),
+                          primary: Colors.grey),
                       onPressed: () {
                         print("Button 1 ");
                       },
-                      child: const Icon(Icons.medical_services,color: Colors.black,size: 45,),
+                      child: Icon(
+                        Icons.medical_services,
+                        color: Colors.black,
+                        size: 45,
+                      ),
                     )
                   ],
                 ),
@@ -137,54 +150,60 @@ class __MainScreenState extends State<_MainScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     ElevatedButton(
-                      style:
-                      ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.fromLTRB(60, 35, 60, 35),
-                        primary: Colors.grey
-                        ),  
+                      style: ElevatedButton.styleFrom(
+                          padding: EdgeInsets.fromLTRB(60, 35, 60, 35),
+                          primary: Colors.grey),
                       onPressed: () {
                         print("Button 1 ");
                       },
-                      child: const Icon(Icons.shopping_bag,color: Colors.black,size: 45,),
+                      child: Icon(
+                        Icons.shopping_bag,
+                        color: Colors.black,
+                        size: 45,
+                      ),
                     ),
                     ElevatedButton(
-                      style:
-                      ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.fromLTRB(60, 35, 60, 35),
-                        primary: Colors.grey
-                        ),  
-                      onPressed: () {
-                        print("Button 1 ");
-                      },
-                      child: const Icon(Icons.menu_book,color: Colors.black,size: 45,)
-                    )
+                        style: ElevatedButton.styleFrom(
+                            padding: EdgeInsets.fromLTRB(60, 35, 60, 35),
+                            primary: Colors.grey),
+                        onPressed: () {
+                          print("Button 1 ");
+                        },
+                        child: Icon(
+                          Icons.menu_book,
+                          color: Colors.black,
+                          size: 45,
+                        ))
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     ElevatedButton(
-                      style:
-                        ElevatedButton.styleFrom(
-                          padding: const EdgeInsets.fromLTRB(60, 35, 60, 35),
-                          primary: Colors.grey
-                        ),
+                      style: ElevatedButton.styleFrom(
+                          padding: EdgeInsets.fromLTRB(60, 35, 60, 35),
+                          primary: Colors.grey),
                       onPressed: () {
                         print("Button 1 ");
                       },
-                      
-                      child: const Icon(Icons.translate,color: Colors.black,size: 45,),
+                      child: Icon(
+                        Icons.translate,
+                        color: Colors.black,
+                        size: 45,
+                      ),
                     ),
                     ElevatedButton(
-                      style:
-                        ElevatedButton.styleFrom(
-                          padding: const EdgeInsets.fromLTRB(60, 35, 60, 35),
-                          primary: Colors.grey
-                        ),  
+                      style: ElevatedButton.styleFrom(
+                          padding: EdgeInsets.fromLTRB(60, 35, 60, 35),
+                          primary: Colors.grey),
                       onPressed: () {
                         print("Button 1 ");
                       },
-                      child: const Icon(Icons.shopping_bag,color:Colors.black,size: 45,),
+                      child: Icon(
+                        Icons.shopping_bag,
+                        color: Colors.black,
+                        size: 45,
+                      ),
                     )
                   ],
                 ),
@@ -206,13 +225,13 @@ class Random extends StatelessWidget {
   }
 }
 
-class Fart extends StatelessWidget {
-  const Fart({Key? key}) : super(key: key);
+class Profile extends StatelessWidget {
+  const Profile({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: const Text("Fart"),
+      child: Text("Profile"),
     );
   }
 }
