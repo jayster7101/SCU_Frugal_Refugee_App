@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'Pages/items.dart';
 import 'mockData.dart';
 import 'Pages/Health.dart';
 
@@ -154,7 +154,9 @@ class __MainScreenState extends State<_MainScreen> {
                           padding: EdgeInsets.fromLTRB(60, 35, 60, 35),
                           primary: Colors.grey),
                       onPressed: () {
-                        print("Button 1 ");
+                        Navigator.push(context, MaterialPageRoute(builder: (context){
+                          return const Items();
+                        }));
                       },
                       child: Icon(
                         Icons.shopping_bag,
