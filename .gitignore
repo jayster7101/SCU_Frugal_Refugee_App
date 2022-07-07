@@ -32,7 +32,7 @@ migrate_working_dir/
 .pub/
 /build/
 #Ignore API keys stored here
-**apikeys.dart 
+\lib\Pages\services\apikeys.dart
 
 # Web related
 lib/generated_plugin_registrant.dart
