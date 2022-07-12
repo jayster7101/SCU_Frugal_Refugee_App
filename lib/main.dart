@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'Pages/items.dart';
 import 'mockData.dart';
 import 'Pages/Health.dart';
+import 'Pages/news.dart';
 
 void main() {
   runApp(MyApp());
@@ -118,11 +119,11 @@ class __MainScreenState extends State<_MainScreen> {
                           padding: const EdgeInsets.fromLTRB(60, 35, 60, 35),
                           primary: Colors.grey),
                       onPressed: () {
-                        print("Button 1 ");
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const Health()));
+                        Navigator.push(context,
+                          MaterialPageRoute(
+                            builder: (context) => const News(),
+                          )
+                        );
                        // Navigator.pop(context);
                       },
                       child: Icon(
@@ -137,6 +138,10 @@ class __MainScreenState extends State<_MainScreen> {
                           primary: Colors.grey),
                       onPressed: () {
                         print("Button 1 ");
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const Health()));
                       },
                       child: Icon(
                         Icons.medical_services,

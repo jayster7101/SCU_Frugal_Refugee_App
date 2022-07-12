@@ -29,8 +29,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  # Used to launc URLs inside application.
   url_launcher: ^6.1.4
-
+  # Used to get API data
+  http: ^0.13.4
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
