@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:starter/Pages/services/translateresult.dart';
 import 'services/translateget.dart';
+import 'services/languages.dart';
 
 class Translate extends StatefulWidget {
   const Translate({Key? key}) : super(key: key);
@@ -9,6 +11,28 @@ class Translate extends StatefulWidget {
 }
 
 class _TranslateState extends State<Translate> {
+  String lang1 = "en";
+  String lang2 = "es";
+  String firstDropdownValue = "English";
+  String secondDropdownValue = "Spanish";
+  Map query = {};
+  void getTranslateMap() async{
+    query = await t.getTranslate(_controller.text, lang1, lang2);
+    await Future.delayed(const Duration(milliseconds: 400));
+  }
+  late TextEditingController _controller;
+  /// Function to initiate `TextEditiingController`
+  @override
+  void initState() {
+    super.initState();
+    _controller = TextEditingController();
+  }
+  /// Function to remove controller after finished use
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
   TranslateGet t = TranslateGet();
   @override
   Widget build(BuildContext context) {
@@ -20,14 +44,73 @@ class _TranslateState extends State<Translate> {
       body: Center(
         child: Column(
           children: [
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: TextFormField(
+                controller: _controller,
+                onFieldSubmitted: (String value){
+                  Navigator.push(context, 
+                    MaterialPageRoute(
+                      builder: (context) => const TranslateResult(),
+                      settings: RouteSettings(
+                        arguments: value,
+                      )
+                    ),
+                  );
+                },
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: "Input text", 
+                ),
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                DropdownButton(
+                  value: firstDropdownValue,
+                  items: langList.map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(value: value, child: Text(value),);
+                  }).toList(), 
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      firstDropdownValue = newValue!;
+                    });
+                  }
+                ),
+                const Text("to"),
+                DropdownButton(
+                  value: secondDropdownValue,
+                  items: langList.map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(value: value, child: Text(value),);
+                  }).toList(), 
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      secondDropdownValue = newValue!;
+                    });
+                  }
+                ),
+              ],
+            ),
             ElevatedButton(
               onPressed: (){
-                t.getTranslate("Hello", "es");
-                setState(() {
-                  
+                lang1 = langMap[firstDropdownValue]!;
+                lang2 = langMap[secondDropdownValue]!;
+                getTranslateMap();
+                Future.delayed(const Duration(milliseconds: 3000), (){
+                  showDialog(
+                    context: context, 
+                    builder: (context) => AlertDialog(
+                      title: const Text("Translated Text"),
+                      content: Text(query["data"]["translations"]["translatedText"]),
+                      actions: [
+                        TextButton(onPressed: () => Navigator.pop(context), child: const Text("Ok")),
+                      ],
+                    )
+                  );
                 });
               },
-              child: const Text("test"),
+              child: const Text("Submit"),
             ),
           ],
         ),

@@ -12,7 +12,6 @@ class News extends StatefulWidget {
 }
 
 class _NewsState extends State<News> {
-  String query = "";
   late TextEditingController _controller;
   /// Function to initiate `TextEditiingController`
   @override
@@ -37,25 +36,26 @@ class _NewsState extends State<News> {
       body: Center(
         child: Column(
           children: [
-            const SizedBox(height: 20),
-            TextFormField(
-              controller: _controller,
-              onFieldSubmitted: (String value){
-                Navigator.push(context, 
-                  MaterialPageRoute(
-                    builder: (context) => const NewsResult(),
-                    settings: RouteSettings(
-                      arguments: value,
-                    )
-                  ),
-                );
-              },
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: "Search for news", 
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: TextFormField(
+                controller: _controller,
+                onFieldSubmitted: (String value){
+                  Navigator.push(context, 
+                    MaterialPageRoute(
+                      builder: (context) => const NewsResult(),
+                      settings: RouteSettings(
+                        arguments: value,
+                      )
+                    ),
+                  );
+                },
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: "Search for news", 
+                ),
               ),
             ),
-            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: (){
                 Navigator.push(context, 

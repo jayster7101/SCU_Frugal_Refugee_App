@@ -4,11 +4,11 @@ import 'apikeys.dart';
 /// Class to handle API requests to Microsoft Cloud Translater
 class TranslateGet{
   /// Method that returns a map with translated text from query
-  Future<Map> getTranslate(String query, String lang) async {
+  Future<Map> getTranslate(String query, String lang1, String lang2) async {
     Uri url = Uri.parse(
-      "https://microsoft-translator-text.p.rapidapi.com/translate?to%5B0%5D=$lang&api-version=3.0&profanityAction=NoAction&textType=plain"
+      "https://deep-translate1.p.rapidapi.com/language/translate/v2"
     );
-    String body = convert.jsonEncode({"Text": query});
+    String body = convert.jsonEncode({"q": query, "source":lang1, "target":lang2});
     http.Response response = await http.post(url,
       body: body,
       headers: {
