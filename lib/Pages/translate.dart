@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:starter/Pages/services/translateresult.dart';
 import 'services/translateget.dart';
 import 'services/languages.dart';
 
@@ -16,10 +15,6 @@ class _TranslateState extends State<Translate> {
   String firstDropdownValue = "English";
   String secondDropdownValue = "Spanish";
   Map query = {};
-  void getTranslateMap() async{
-    query = await t.getTranslate(_controller.text, lang1, lang2);
-    await Future.delayed(const Duration(milliseconds: 400));
-  }
   late TextEditingController _controller;
   /// Function to initiate `TextEditiingController`
   @override
@@ -49,14 +44,23 @@ class _TranslateState extends State<Translate> {
               child: TextFormField(
                 controller: _controller,
                 onFieldSubmitted: (String value){
-                  Navigator.push(context, 
-                    MaterialPageRoute(
-                      builder: (context) => const TranslateResult(),
-                      settings: RouteSettings(
-                        arguments: value,
-                      )
-                    ),
-                  );
+                  if (_controller.text != ""){
+                    lang1 = langMap[firstDropdownValue]!;
+                    lang2 = langMap[secondDropdownValue]!;
+                    t.getTranslate(_controller.text, lang1, lang2).then((a){
+                      query = a;
+                      showDialog(
+                        context: context, 
+                        builder: (context) => AlertDialog(
+                          title: const Text("Translated Text"),
+                          content: Text(query["data"]["translations"]["translatedText"]),
+                          actions: [
+                            TextButton(onPressed: () => Navigator.pop(context), child: const Text("Ok")),
+                          ],
+                        )
+                      );
+                    });
+                  }
                 },
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
@@ -94,21 +98,23 @@ class _TranslateState extends State<Translate> {
             ),
             ElevatedButton(
               onPressed: (){
-                lang1 = langMap[firstDropdownValue]!;
-                lang2 = langMap[secondDropdownValue]!;
-                getTranslateMap();
-                Future.delayed(const Duration(milliseconds: 3000), (){
-                  showDialog(
-                    context: context, 
-                    builder: (context) => AlertDialog(
-                      title: const Text("Translated Text"),
-                      content: Text(query["data"]["translations"]["translatedText"]),
-                      actions: [
-                        TextButton(onPressed: () => Navigator.pop(context), child: const Text("Ok")),
-                      ],
-                    )
-                  );
-                });
+                if (_controller.text != ""){
+                  lang1 = langMap[firstDropdownValue]!;
+                  lang2 = langMap[secondDropdownValue]!;
+                  t.getTranslate(_controller.text, lang1, lang2).then((a){
+                    query = a;
+                    showDialog(
+                      context: context, 
+                      builder: (context) => AlertDialog(
+                        title: const Text("Translated Text"),
+                        content: Text(query["data"]["translations"]["translatedText"]),
+                        actions: [
+                          TextButton(onPressed: () => Navigator.pop(context), child: const Text("Ok")),
+                        ],
+                      )
+                    );
+                  });
+                }
               },
               child: const Text("Submit"),
             ),

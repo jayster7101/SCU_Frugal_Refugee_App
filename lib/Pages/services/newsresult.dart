@@ -23,7 +23,7 @@ class _NewsResultState extends State<NewsResult> {
       list = newsFill.getNews(await newsGet.getSearch(query));
     }
     catch(e){
-      throw "Could not find news";
+      throw Exception("Could not find news");
     }
     await Future.delayed(const Duration(milliseconds: 400));
     setState((){});

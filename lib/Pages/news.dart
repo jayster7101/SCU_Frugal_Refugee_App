@@ -1,7 +1,4 @@
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:starter/Pages/services/newsresult.dart';
-import 'services/newscard.dart';
 import 'package:flutter/material.dart';
 
 class News extends StatefulWidget {

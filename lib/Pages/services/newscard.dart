@@ -20,7 +20,7 @@ class _NewsCardState extends State<NewsCard> {
   ///given a parsed url.
   void _launchUrl(url) async{
     if (!await launchUrl(url)) {
-      throw 'Could not launch $url';
+      throw Exception('Could not launch $url');
     }
   }
   

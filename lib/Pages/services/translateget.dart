@@ -17,8 +17,13 @@ class TranslateGet{
         "X-RapidAPI-Host": translateHost,
       }
     );
-    Map m = convert.jsonDecode(response.body);
-    print(m);
-    return m;
+    if (response.statusCode == 200){
+      Map m = convert.jsonDecode(response.body);
+      return m;
+    }
+    else{
+      throw Exception("Failed to obtain translation.");
+    }
+    
   }
 }

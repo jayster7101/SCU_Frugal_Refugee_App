@@ -1,2 +1,2 @@
-Map<String, String> langMap = {"English":"en", "Spanish":"es", "Arabic":"ar"};
-List<String> langList = ["English", "Spanish", "Arabic"];
+Map<String, String> langMap = {"English":"en", "Spanish":"es", "Arabic":"ar", "Chinese":"zh", "Portuguese":"pt", "Tagalog":"tl"};
+List<String> langList = ["English", "Spanish", "Arabic", "Chinese", "Portuguese", "Tagalog"];
