@@ -4,6 +4,7 @@ import 'Pages/items.dart';
 import 'mockData.dart';
 import 'Pages/Health.dart';
 import 'Pages/news.dart';
+import 'Pages/profile.dart';
 
 void main() {
   runApp(MyApp());
@@ -42,7 +43,7 @@ class _bottomBarState extends State<bottomBar> {
               Icons.person,
               color: Colors.white,
             ),
-            label: "Person",
+            label: "Profile",
           ),
         ],
         onTap: (index) {
@@ -231,17 +232,6 @@ class Random extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: const Text("Hello world"),
-    );
-  }
-}
-
-class Profile extends StatelessWidget {
-  const Profile({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Text("Profile"),
     );
   }
 }
