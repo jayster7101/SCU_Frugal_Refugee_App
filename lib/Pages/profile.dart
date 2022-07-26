@@ -9,6 +9,9 @@ class Profile extends StatefulWidget {
   State<Profile> createState() => _ProfileState();
 }
 
+@override
+void initState() {}
+
 class _ProfileState extends State<Profile> {
   ProfileData pd = ProfileData();
   @override
@@ -21,37 +24,42 @@ class _ProfileState extends State<Profile> {
       body: Center(
         child: Column(
           children: [
-            Row(
-              children: [
-                Container(
-                  width: 150,
-                  height: 150,
-                  decoration: BoxDecoration(
-                    color: Colors.grey,
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                      fit: BoxFit.fill,
-                      image: FileImage(pd.getImage()),
-                    ),
-                  ),
+            const SizedBox(height: 12.0),
+            Container(
+              width: 150,
+              height: 150,
+              decoration: BoxDecoration(
+                color: Colors.grey,
+                shape: BoxShape.circle,
+                image: DecorationImage(
+                  fit: BoxFit.fill,
+                  image: FileImage(pd.getImage()),
                 ),
-                ElevatedButton(
-                  onPressed: (){
-                    Navigator.push(context, MaterialPageRoute(
-                      builder: (context) => const ProfileChange(),
-                    ));
-                  },
-                  child: Row(
-                    children: const [
-                      Icon(Icons.edit),
-                      Text("Edit"),
-                    ],
-                  ),
-                ),
-                Text(pd.getFirstName()),
-                Text(pd.getLastName()),
-              ],
+              ),
             ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(150.0, 8.0, 150.0, 8.0),
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const ProfileChange(),
+                              settings: RouteSettings(arguments: pd)))
+                      .then((value) {
+                    setState(() {});
+                  });
+                },
+                child: Row(
+                  children: const [
+                    Icon(Icons.edit),
+                    Text("Edit"),
+                  ],
+                ),
+              ),
+            ),
+            Text(pd.getFirstName()),
+            Text(pd.getLastName()),
           ],
         ),
       ),
