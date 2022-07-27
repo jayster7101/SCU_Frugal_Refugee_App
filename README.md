@@ -1,16 +1,15 @@
-# starter
+# Application for Refugees
 
-A new Flutter project.
+A Flutter application designed by Nhan Nguyen and Jayden Jardine designed with guidence from the Frugal Innovation Hub.
 
-## Getting Started
+## Objective
 
-This project is a starting point for a Flutter application.
+Around the world refugees are in need of assistance where ever they go. The prevalence of mobile technology has made it easier to provide aid in some sort of fashion to meet needs. 
 
-A few resources to get you started if this is your first Flutter project:
+Through the Frugal Innovation Hub, we were tasked on developing a proof-of-concept application that would assist incoming refugees.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Credits
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Frugal Innovation Hub
+
+
