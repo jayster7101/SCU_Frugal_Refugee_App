@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
-
+import 'package:camera/camera.dart';
+import 'package:starter/Pages/translate.dart';
+import 'Pages/items.dart';
 import 'mockData.dart';
 import 'Pages/Health.dart';
+import 'Pages/news.dart';
+import 'Pages/profile.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(MyApp());
 }
 
@@ -40,12 +45,11 @@ class _bottomBarState extends State<bottomBar> {
               Icons.person,
               color: Colors.white,
             ),
-            label: "Person",
+            label: "Profile",
           ),
         ],
         onTap: (index) {
           setState(() {
-            print(index);
             selected_Index = index;
           });
         },
@@ -118,11 +122,11 @@ class __MainScreenState extends State<_MainScreen> {
                           padding: const EdgeInsets.fromLTRB(60, 35, 60, 35),
                           primary: Colors.grey),
                       onPressed: () {
-                        print("Button 1 ");
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const Health()));
+                        Navigator.push(context,
+                          MaterialPageRoute(
+                            builder: (context) => const News(),
+                          )
+                        );
                        // Navigator.pop(context);
                       },
                       child: Icon(
@@ -137,6 +141,10 @@ class __MainScreenState extends State<_MainScreen> {
                           primary: Colors.grey),
                       onPressed: () {
                         print("Button 1 ");
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const Health()));
                       },
                       child: Icon(
                         Icons.medical_services,
@@ -154,7 +162,9 @@ class __MainScreenState extends State<_MainScreen> {
                           padding: EdgeInsets.fromLTRB(60, 35, 60, 35),
                           primary: Colors.grey),
                       onPressed: () {
-                        print("Button 1 ");
+                        Navigator.push(context, MaterialPageRoute(builder: (context){
+                          return const Items();
+                        }));
                       },
                       child: Icon(
                         Icons.shopping_bag,
@@ -184,7 +194,9 @@ class __MainScreenState extends State<_MainScreen> {
                           padding: EdgeInsets.fromLTRB(60, 35, 60, 35),
                           primary: Colors.grey),
                       onPressed: () {
-                        print("Button 1 ");
+                        Navigator.push(context, MaterialPageRoute(builder: (context){
+                          return const Translate();
+                        }));
                       },
                       child: Icon(
                         Icons.translate,
@@ -221,17 +233,6 @@ class Random extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: const Text("Hello world"),
-    );
-  }
-}
-
-class Profile extends StatelessWidget {
-  const Profile({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Text("Profile"),
     );
   }
 }
