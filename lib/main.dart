@@ -204,19 +204,6 @@ class __MainScreenState extends State<_MainScreen> {
                         size: 45,
                       ),
                     ),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          padding: EdgeInsets.fromLTRB(60, 35, 60, 35),
-                          primary: Colors.grey),
-                      onPressed: () {
-                        print("Button 1 ");
-                      },
-                      child: Icon(
-                        Icons.shopping_bag,
-                        color: Colors.black,
-                        size: 45,
-                      ),
-                    )
                   ],
                 ),
               ]),
