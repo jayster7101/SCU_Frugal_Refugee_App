@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
 import 'package:starter/mockData.dart';
+import 'package:starter/Pages/services/apikeys.dart';
 import 'dart:convert';
 
 List<Location> locations = [];
 String open = "";
 var good;
-String token = // 'Enter Token' ;
+String token = yelpApiKey;
 
 // creates a future function called get_pharma_location()
 // Params is the location of where the person is as

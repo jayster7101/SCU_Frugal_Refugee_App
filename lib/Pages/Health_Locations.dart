@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'package:map_launcher/map_launcher.dart';
 import 'package:starter/mockData.dart';
-import 'dart:convert';
 import 'package:geolocator/geolocator.dart';
 import 'package:starter/functions/get_pharamacy_location.dart';
 import 'package:url_launcher/url_launcher.dart';
