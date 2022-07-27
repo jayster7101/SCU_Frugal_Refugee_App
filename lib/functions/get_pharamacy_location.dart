@@ -7,8 +7,7 @@ import 'dart:convert';
 List<Location> locations = [];
 String open = "";
 var good;
-String token =
-    'Bearer jZAGqOHFkvs8cEDhywZRDtAp6C6v7TH9UUg3vO6cFyIc8WC57NU01rlTdXTGnBxxQHBEjfwKlAvjh5LrUsII9qs-4CjW3Ke3lOO9VoPKGJlgLqedp_0Q-S_qyBfGYnYx';
+String token = // 'Enter Token' ;
 
 // creates a future function called get_pharma_location()
 // Params is the location of where the person is as
