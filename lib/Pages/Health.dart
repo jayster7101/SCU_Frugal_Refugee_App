@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:starter/Pages/Health_Locations.dart';
+import 'package:starter/functions/get_pharamacy_location.dart';
 
 class Health extends StatelessWidget {
   const Health({Key? key}) : super(key: key);
@@ -20,7 +21,7 @@ class Health extends StatelessWidget {
           child: SingleChildScrollView(
               child: Wrap(
             runSpacing: 20, // sets padding to 20 between each container
-            alignment: WrapAlignment.center,
+            alignment: WrapAlignment.spaceBetween,
             //mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Container(
@@ -47,8 +48,9 @@ class Health extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) =>
-                                    const Health_Locations()));
+                                builder: (context) => const Health_Locations(
+                                      place: "Pharmacy",
+                                    )));
                       },
                     ),
                   )),
@@ -69,10 +71,17 @@ class Health extends StatelessWidget {
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(12))),
                       child: const Text(
-                        "Pharmacy",
+                        "Hospital",
                         style: TextStyle(color: Colors.redAccent),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Health_Locations(
+                                      place: "Hospital",
+                                    )));
+                      },
                     ),
                   )),
               Container(
@@ -92,10 +101,77 @@ class Health extends StatelessWidget {
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(12))),
                       child: const Text(
-                        "Pharmacy",
+                        "Mental Health",
                         style: TextStyle(color: Colors.redAccent),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Health_Locations(
+                                      place: "Mental Health",
+                                    )));
+                      },
+                    ),
+                  )),
+              Container(
+                  height:
+                      120, // sets height to 120 and width will be size of screen taking padding into consideration
+                  child: SizedBox(
+                    height: double.infinity,
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          side: const BorderSide(
+                              color: Colors.redAccent,
+                              width: 2,
+                              style: BorderStyle.solid),
+                          primary: Colors.white,
+                          textStyle: TextStyle(fontSize: 40),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12))),
+                      child: const Text(
+                        "Dental",
+                        style: TextStyle(color: Colors.redAccent),
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Health_Locations(
+                                      place: "Dentist",
+                                    )));
+                      },
+                    ),
+                  )),
+              Container(
+                  height:
+                      120, // sets height to 120 and width will be size of screen taking padding into consideration
+                  child: SizedBox(
+                    height: double.infinity,
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          side: const BorderSide(
+                              color: Colors.redAccent,
+                              width: 2,
+                              style: BorderStyle.solid),
+                          primary: Colors.white,
+                          textStyle: TextStyle(fontSize: 40),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12))),
+                      child: const Text(
+                        "Nursing Homes",
+                        style: TextStyle(color: Colors.redAccent),
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Health_Locations(
+                                      place: "Nursing Homes",
+                                    )));
+                      },
                     ),
                   )),
             ],

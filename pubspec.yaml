@@ -43,6 +43,8 @@ dependencies:
   camera: ^0.10.0
   # Adds easier access to tags.
   material_tag_editor: ^0.1.2
+  geolocator: ^9.0.1
+  map_launcher: ^2.2.3
 
 dev_dependencies:
   flutter_test:
