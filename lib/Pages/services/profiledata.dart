@@ -1,65 +1,119 @@
-import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'dart:io';
+import 'dart:convert';
 
 /// Class to handle data loading of profile
 /// Should handle pictures, user data, etc.
 class ProfileData {
-  ProfileData() {
-    /* _loadData(); */
-  }
-  String nameFirst = "Test";
-  String nameLast = "Test";
-  File image = File("");
-  late Image profilePicture;
+  Map data = {
+    "nameFirst": "Anonymous",
+    "nameLast": " ",
+    "birthday": " ",
+    "gender": " ",
+    "imagePath": " ",
+    "tags": [],
+  };
 
-  /// Function to get image location
-  File getImage() {
-    return image;
+  /// Function to get image location.
+  String getImage() {
+    return data["imagePath"];
   }
 
-  /// Function to obtain first name
+  /// Function to get `tags`.
+  List<String> getTags(){
+    return List<String>.from(data["tags"]);
+  }
+
+  /// Function to obtain first name.
   /// as a string
   String getFirstName() {
-    return nameFirst;
+    return data["nameFirst"];
   }
 
-  /// Function to obtain last name
+  /// Function to obtain last name.
   /// as a string
   String getLastName() {
-    return nameLast;
+    return data["nameLast"];
   }
 
-  /// Function to change `nameFirst`
+  /// Function to obtain birthday.
+  /// as a string
+  String getBirthday() {
+    return data["birthday"];
+  }
+
+  /// Function to get gender.
+  String getGender(){
+    return data["gender"];
+  }
+
+  /// Function to change `nameFirst`.
   void changeFirstName(string) {
-    nameFirst = string;
+    data["nameFirst"] = string;
   }
 
-  /// Function to change `nameLast`
+  /// Function to change `nameLast`.
   void changeLastName(string) {
-    nameLast = string;
+    data["nameLast"] = string;
+  }
+
+  /// Function to change `birthday`.
+  void changeBirthday(string){
+    data["birthday"] = string;
+  }
+
+  /// Function to change profile image 
+  /// location.
+  void changeImage(string){
+    data["imagePath"] = string.substring(1);
+  }
+
+  /// Function to change `tags`.
+  void changeTags(list){
+    data["tags"] = list;
+  }
+  
+  /// Function to change `gender`.
+  void changeGender(string){
+    data["gender"] = string;
   }
 
   /// Private function to load data
   /// from file to obtain name, picture, etc.
-  /* Future<void> _loadData() async {
+  Future<String> _loadData() async {
     try {
-      final file = await _localFile;
-      final contents = file;
+      File file = await _localFile;
+      String contents = await file.readAsString();
+      return contents;
     } catch (e) {
-      return 0;
+      writeFile();
+      File file = await _localFile;
+      String contents = await file.readAsString();
+      return contents;
     }
-  } */
+  }
 
-  /// Private function to get local path
+  /// Private function to get local path.
   Future<String> get _localPath async {
-    final directory = await getApplicationDocumentsDirectory();
+    Directory directory = await getApplicationDocumentsDirectory();
     return directory.path;
   }
 
-  /// Private function to get local file
+  /// Private function to get local file.
   Future<File> get _localFile async {
-    final path = await _localPath;
-    return File('$path/counter.json');
+    String path = await _localPath;
+    return File('$path/data.txt');
+  }
+
+  /// Function to save data to file.
+  Future<File> writeFile() async {
+    File file = await _localFile;
+    // Write the file.
+    return file.writeAsString(json.encode(data));
+  }
+  /// Function to load data into object.
+  Future<void> loadClass() async{
+    String temp = await _loadData();
+    data = Map.castFrom(jsonDecode(temp));
   }
 }

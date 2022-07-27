@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:camera/camera.dart';
 import 'package:starter/Pages/translate.dart';
 import 'Pages/items.dart';
 import 'mockData.dart';
@@ -6,7 +7,8 @@ import 'Pages/Health.dart';
 import 'Pages/news.dart';
 import 'Pages/profile.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(MyApp());
 }
 
@@ -48,7 +50,6 @@ class _bottomBarState extends State<bottomBar> {
         ],
         onTap: (index) {
           setState(() {
-            print(index);
             selected_Index = index;
           });
         },

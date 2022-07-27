@@ -101,9 +101,10 @@ class _TranslateState extends State<Translate> {
                 if (_controller.text != ""){
                   lang1 = langMap[firstDropdownValue]!;
                   lang2 = langMap[secondDropdownValue]!;
+                  bool _isLoading = true;
                   t.getTranslate(_controller.text, lang1, lang2).then((a){
                     query = a;
-                    showDialog(
+                    /* showDialog(
                       context: context, 
                       builder: (context) => AlertDialog(
                         title: const Text("Translated Text"),
@@ -112,7 +113,7 @@ class _TranslateState extends State<Translate> {
                           TextButton(onPressed: () => Navigator.pop(context), child: const Text("Ok")),
                         ],
                       )
-                    );
+                    ); */
                   });
                 }
               },
