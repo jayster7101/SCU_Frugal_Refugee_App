@@ -7,12 +7,14 @@ class NewsCard extends StatefulWidget {
   final String title;
   final String publisher;
   final String url;
+  final String image;
 
   const NewsCard(
       {Key? key,
       required this.title,
       required this.publisher,
-      required this.url})
+      required this.url,
+      required this.image})
       : super(key: key);
 
   @override
@@ -36,7 +38,13 @@ class _NewsCardState extends State<NewsCard> {
           mainAxisSize: MainAxisSize.min,
           children: [
             ListTile(
-              leading: const Icon(Icons.newspaper),
+              leading: Image.network(
+                widget.image,
+                fit: BoxFit.fill,
+                width: 100,
+                height: 100,
+                alignment: Alignment.center,
+              ),
               title: Text(widget.title),
               subtitle: Text(widget.publisher),
               onTap: () {

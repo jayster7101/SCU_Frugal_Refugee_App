@@ -6,7 +6,7 @@ class NewsFill{
   List<NewsCard> getNews(Map map){
     List<NewsCard> cards = [];
     for (int i = 0; i < map["articles"].length; i++){
-      NewsCard card = NewsCard(title: map["articles"][i]["title"], publisher: "", url: map["articles"][i]["link"]);
+      NewsCard card = NewsCard(title: map["articles"][i]["title"], publisher: "", url: map["articles"][i]["link"], image: map["articles"][i]["media"],);
       cards.add(card);
     }
     return cards;
