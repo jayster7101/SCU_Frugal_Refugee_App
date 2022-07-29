@@ -11,6 +11,7 @@ class Translate extends StatefulWidget {
 
 class _TranslateState extends State<Translate> {
   List<Savedr> saved = [];
+  bool isLoading = false;
   String lang1 = "en";
   String lang2 = "es";
   String firstDropdownValue = "English";
@@ -47,27 +48,6 @@ class _TranslateState extends State<Translate> {
               padding: const EdgeInsets.all(12.0),
               child: TextFormField(
                 controller: _controller,
-                onFieldSubmitted: (String value) {
-                  if (_controller.text != "") {
-                    lang1 = langMap[firstDropdownValue]!;
-                    lang2 = langMap[secondDropdownValue]!;
-                    t.getTranslate(_controller.text, lang1, lang2).then((a) {
-                      query = a;
-                      showDialog(
-                          context: context,
-                          builder: (context) => AlertDialog(
-                                title: const Text("Translated Text"),
-                                content: Text(query["data"]["translations"]
-                                    ["translatedText"]),
-                                actions: [
-                                  TextButton(
-                                      onPressed: () => Navigator.pop(context),
-                                      child: const Text("Ok")),
-                                ],
-                              ));
-                    });
-                  }
-                },
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: "Input text",
@@ -109,13 +89,18 @@ class _TranslateState extends State<Translate> {
               ],
             ),
             ElevatedButton(
-              onPressed: () {
-                if (_controller.text != "") {
+              onPressed: (){
+                if (_controller.text != ""){
+                  setState(() {
+                    isLoading = true;
+                  });
                   lang1 = langMap[firstDropdownValue]!;
                   lang2 = langMap[secondDropdownValue]!;
-                  bool _isLoading = true;
-                  t.getTranslate(_controller.text, lang1, lang2).then((a) {
+                  t.getTranslate(_controller.text, lang1, lang2).then((a){
                     query = a;
+                    setState(() {
+                      isLoading = false;
+                    });
                     /* showDialog(
                       context: context, 
                       builder: (context) => AlertDialog(
@@ -131,7 +116,22 @@ class _TranslateState extends State<Translate> {
               },
               child: const Text("Submit"),
             ),
-            //ListView.builder(itemBuilder: )
+            if (isLoading == true) ...[
+              const SizedBox(height: 20),
+              const CircularProgressIndicator(),
+            ]
+            else if (isLoading == false) ... [
+              if (query.isNotEmpty)...[
+                const SizedBox(height: 8),
+                Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Text(
+                    query["data"]["translations"]["translatedText"],
+                    style: const TextStyle(fontSize: 40),
+                  ),
+                ),
+              ]
+            ]
           ],
         ),
       ),
