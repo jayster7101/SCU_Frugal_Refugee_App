@@ -31,11 +31,11 @@ class _NewsResultState extends State<NewsResult> {
 
   @override
   Widget build(BuildContext context) {
-    var query = ModalRoute.of(context)!.settings.arguments;
+    String query = ModalRoute.of(context)!.settings.arguments as String;
     fillList(query);
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Results"),
+        title: Text(query),
         centerTitle: true,
       ),
       body: Center(

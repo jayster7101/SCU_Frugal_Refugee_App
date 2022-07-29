@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
+import 'package:starter/Pages/information.dart';
 import 'package:starter/Pages/translate.dart';
 import 'Pages/items.dart';
 import 'mockData.dart';
@@ -177,7 +178,11 @@ class __MainScreenState extends State<_MainScreen> {
                             padding: EdgeInsets.fromLTRB(60, 35, 60, 35),
                             primary: Colors.grey),
                         onPressed: () {
-                          print("Button 1 ");
+                          Navigator.push(
+                            context, MaterialPageRoute(builder: (context){
+                              return const Information();
+                            })
+                          );
                         },
                         child: Icon(
                           Icons.menu_book,
