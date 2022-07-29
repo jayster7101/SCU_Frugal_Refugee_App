@@ -1,6 +1,6 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
-import 'apikeys.dart.txt';
+import 'apikeys.dart';
 
 /// Class to obtain news from `free-news` api
 class NewsGet {
@@ -18,6 +18,7 @@ class NewsGet {
     Map m = convert.jsonDecode(response.body);
     return m;
   }
+
   /// Function to clear map after use is finished.
   void dipose() {
     m.clear();

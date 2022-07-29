@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
 import 'package:starter/mockData.dart';
-import 'package:starter/Pages/services/apikeys.dart.txt';
+import 'package:starter/Pages/services/apikeys.dart';
 import 'dart:convert';
 
 List<Location> locations = [];
@@ -38,20 +38,19 @@ Future get_pharma_location(Position? _position, String location) async {
             {
               // adds location object to list of locations
               locations.add(Location(
-                good["businesses"][i]["name"],
-                good["businesses"][i]["location"]["address1"] +
-                    " " +
-                    good["businesses"][i]["location"]["city"] +
-                    ", " +
-                    good["businesses"][i]["location"]["state"] +
-                    " " +
-                    good["businesses"][i]["location"]["zip_code"],
-                good["businesses"][i]["distance"],
-                good["businesses"][i]["image_url"],
-                good["businesses"][i]["coordinates"]["latitude"],
-                good["businesses"][i]["coordinates"]["longitude"],
-                good["businesses"][i]["phone"]
-              )),
+                  good["businesses"][i]["name"],
+                  good["businesses"][i]["location"]["address1"] +
+                      " " +
+                      good["businesses"][i]["location"]["city"] +
+                      ", " +
+                      good["businesses"][i]["location"]["state"] +
+                      " " +
+                      good["businesses"][i]["location"]["zip_code"],
+                  good["businesses"][i]["distance"],
+                  good["businesses"][i]["image_url"],
+                  good["businesses"][i]["coordinates"]["latitude"],
+                  good["businesses"][i]["coordinates"]["longitude"],
+                  good["businesses"][i]["phone"])),
             }
         });
   }
