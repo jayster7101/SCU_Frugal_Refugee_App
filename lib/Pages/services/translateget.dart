@@ -1,6 +1,6 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
-import 'apikeys.dart';
+import 'apikeys.dart.txt';
 /// Class to handle API requests to Microsoft Cloud Translater
 class TranslateGet{
   /// Method that returns a map with translated text from query

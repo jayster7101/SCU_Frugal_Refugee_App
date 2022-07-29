@@ -4,6 +4,7 @@ import 'package:starter/mockData.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:starter/functions/get_pharamacy_location.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 //import 'package:url_launcher/url_launcher.dart';
 
 Position? _position;
@@ -21,7 +22,8 @@ class _Health_LocationsState extends State<Health_Locations> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    _getCurrentLocation();
+    _getCurrentLocation()
+        .then((current_p) => get_pharma_location(current_p, widget.place));
 
     // print("wasssup");
     //print(locations[0].image);
@@ -180,10 +182,14 @@ class _Health_LocationsState extends State<Health_Locations> {
                                             constraints: BoxConstraints(),
                                           ),
                                           IconButton(
-                                            onPressed: () {
-                                              // launchUrl(Uri(
-                                              //   path: "+99364921507",
-                                              //     scheme: "tel"));
+                                            onPressed: () async {
+                                              if (locations[index]
+                                                  .phone
+                                                  .isNotEmpty) {
+                                                await _makePhoneCall(
+                                                    locations[index].phone);
+                                              }
+                                              ;
                                             },
                                             icon: Icon(Icons.phone),
                                             padding: EdgeInsets.zero,
@@ -261,4 +267,12 @@ showDirectionWithFirstMap(Location location) async {
   await availableMaps[0].showDirections(
       destination: Coords(location.latitude, location.longitude),
       destinationTitle: location.name);
+}
+
+Future<void> _makePhoneCall(String phoneNumber) async {
+  final Uri launchUri = Uri(
+    scheme: 'tel',
+    path: phoneNumber,
+  );
+  await launchUrl(launchUri);
 }

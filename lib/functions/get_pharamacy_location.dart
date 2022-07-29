@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
 import 'package:starter/mockData.dart';
-import 'package:starter/Pages/services/apikeys.dart';
+import 'package:starter/Pages/services/apikeys.dart.txt';
 import 'dart:convert';
 
 List<Location> locations = [];
@@ -50,6 +50,7 @@ Future get_pharma_location(Position? _position, String location) async {
                 good["businesses"][i]["image_url"],
                 good["businesses"][i]["coordinates"]["latitude"],
                 good["businesses"][i]["coordinates"]["longitude"],
+                good["businesses"][i]["phone"]
               )),
             }
         });

@@ -1,0 +1,5 @@
+const String newsApiKey = "8183bfa883msh09567b1e37f06fdp17bd17jsn14bdea001c35";
+const String newsHost = "free-news.p.rapidapi.com";
+const String translateApiKey = "8183bfa883msh09567b1e37f06fdp17bd17jsn14bdea001c35";
+const String translateHost = "deep-translate1.p.rapidapi.com";
+const String yelpApiKey = 'Bearer jZAGqOHFkvs8cEDhywZRDtAp6C6v7TH9UUg3vO6cFyIc8WC57NU01rlTdXTGnBxxQHBEjfwKlAvjh5LrUsII9qs-4CjW3Ke3lOO9VoPKGJlgLqedp_0Q-S_qyBfGYnYx';
