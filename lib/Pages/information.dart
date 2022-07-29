@@ -1,8 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-class Information extends StatelessWidget {
+class Information extends StatefulWidget {
   const Information({Key? key}) : super(key: key);
 
+  @override
+  State<Information> createState() => _InformationState();
+}
+
+class _InformationState extends State<Information> {
+  final Uri url1 = Uri.parse("https://www.acf.hhs.gov/orr/outreach-material/office-refugee-resettlement-national-call-center");
+  final Uri url2 = Uri.parse("https://www.uscis.gov/humanitarian/refugees-and-asylum/refugees");
+  final Uri url3 = Uri.parse("https://www.unhcr.org/en-us/how-to-get-help.html");
+  final Uri url4 = Uri.parse("https://refugees.org/legal-services/");
+  final Uri url5 = Uri.parse("https://refugees.org/refugee-resettlement/");
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -11,13 +22,13 @@ class Information extends StatelessWidget {
         centerTitle: true,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
         child: SingleChildScrollView(
           child: Wrap(
             runSpacing: 20, // sets padding to 20 between each container
             alignment: WrapAlignment.spaceBetween,
             children: [
-              Container(
+              SizedBox(
                 height: 120, // sets height to 120 and width will be size of screen taking padding into consideration
                 child: SizedBox(
                   height: double.infinity,
@@ -29,17 +40,19 @@ class Information extends StatelessWidget {
                             width: 2,
                             style: BorderStyle.solid),
                         primary: Colors.white,
-                        textStyle: TextStyle(fontSize: 40),
+                        textStyle: const TextStyle(fontSize: 40),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12))),
                     child: const Text(
-                      "Pharmacy",
+                      "Hotline",
                       style: TextStyle(color: Colors.blueAccent),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      launchUrl(url1);
+                    },
                   ),
                 )),
-            Container(
+            SizedBox(
                 height: 120, // sets height to 120 and width will be size of screen taking padding into consideration
                 child: SizedBox(
                   height: double.infinity,
@@ -51,17 +64,19 @@ class Information extends StatelessWidget {
                             width: 2,
                             style: BorderStyle.solid),
                         primary: Colors.white,
-                        textStyle: TextStyle(fontSize: 40),
+                        textStyle: const TextStyle(fontSize: 40),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12))),
                     child: const Text(
-                      "Hospital",
+                      "USCIS",
                       style: TextStyle(color: Colors.blueAccent),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      launchUrl(url2);
+                    },
                   ),
                 )),
-            Container(
+            SizedBox(
                 height: 120, // sets height to 120 and width will be size of screen taking padding into consideration
                 child: SizedBox(
                   height: double.infinity,
@@ -73,17 +88,19 @@ class Information extends StatelessWidget {
                             width: 2,
                             style: BorderStyle.solid),
                         primary: Colors.white,
-                        textStyle: TextStyle(fontSize: 40),
+                        textStyle: const TextStyle(fontSize: 40),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12))),
                     child: const Text(
-                      "Mental Health",
+                      "Getting Help",
                       style: TextStyle(color: Colors.blueAccent),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      launchUrl(url3);
+                    },
                   ),
                 )),
-            Container(
+            SizedBox(
                 height: 120, // sets height to 120 and width will be size of screen taking padding into consideration
                 child: SizedBox(
                   height: double.infinity,
@@ -95,17 +112,19 @@ class Information extends StatelessWidget {
                             width: 2,
                             style: BorderStyle.solid),
                         primary: Colors.white,
-                        textStyle: TextStyle(fontSize: 40),
+                        textStyle: const TextStyle(fontSize: 40),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12))),
                     child: const Text(
-                      "Dental",
+                      "Legal",
                       style: TextStyle(color: Colors.blueAccent),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      launchUrl(url4);
+                    },
                   ),
                 )),
-            Container(
+            SizedBox(
               height: 120, // sets height to 120 and width will be size of screen taking padding into consideration
               child: SizedBox(
                 height: double.infinity,
@@ -117,14 +136,15 @@ class Information extends StatelessWidget {
                           width: 2,
                           style: BorderStyle.solid),
                       primary: Colors.white,
-                      textStyle: TextStyle(fontSize: 40),
+                      textStyle: const TextStyle(fontSize: 40),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12))),
                   child: const Text(
-                    "Nursing Homes",
+                    "Resettlement",
                     style: TextStyle(color: Colors.blueAccent),
                   ),
                   onPressed: () {
+                    launchUrl(url5);
                   },
                 ),
               )),
