@@ -29,6 +29,8 @@ class _NewsState extends State<News> {
       appBar: AppBar(
         title: const Text("News"),
         centerTitle: true,
+        shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12)),
       ),
       body: Center(
         child: Column(

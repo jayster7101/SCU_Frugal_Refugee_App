@@ -40,6 +40,8 @@ class _TranslateState extends State<Translate> {
       appBar: AppBar(
         title: const Text("Translate"),
         centerTitle: true,
+        shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12)),
       ),
       body: Center(
         child: Column(

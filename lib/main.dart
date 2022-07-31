@@ -106,9 +106,8 @@ class __MainScreenState extends State<_MainScreen> {
       appBar: AppBar(
           title: const Text("Welcome"),
           centerTitle: true,
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(bottom: Radius.circular(12)),
-          )),
+          shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12))),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(8.0),

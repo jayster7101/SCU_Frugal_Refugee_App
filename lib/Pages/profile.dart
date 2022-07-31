@@ -41,6 +41,8 @@ class _ProfileState extends State<Profile> {
       appBar: AppBar(
         title: const Text("Profile"),
         centerTitle: true,
+        shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12)),
       ),
       body: Center(
         child: ListView(

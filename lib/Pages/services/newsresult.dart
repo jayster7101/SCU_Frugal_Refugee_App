@@ -40,6 +40,8 @@ class _NewsResultState extends State<NewsResult> {
       appBar: AppBar(
         title: Text(query),
         centerTitle: true,
+        shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12)),
       ),
       body: Center(
         child: ListView(

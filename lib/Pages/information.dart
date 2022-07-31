@@ -20,6 +20,8 @@ class _InformationState extends State<Information> {
       appBar: AppBar(
         title: const Text("Information"),
         centerTitle: true,
+        shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12)),
       ),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
