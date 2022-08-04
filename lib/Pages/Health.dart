@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:starter/Pages/Health_Locations.dart';
-import 'package:starter/functions/get_pharamacy_location.dart';
+import 'package:starter/Pages/services/healthlocations.dart';
 
 class Health extends StatelessWidget {
   const Health({Key? key}) : super(key: key);

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:map_launcher/map_launcher.dart';
-import 'package:starter/mockData.dart';
+import 'package:starter/Pages/services/location.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:starter/functions/get_pharamacy_location.dart';
+import 'package:starter/Pages/services/getpharamacylocation.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 //import 'package:url_launcher/url_launcher.dart';

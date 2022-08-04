@@ -3,8 +3,8 @@ import 'package:camera/camera.dart';
 import 'package:starter/Pages/information.dart';
 import 'package:starter/Pages/translate.dart';
 import 'Pages/items.dart';
-import 'mockData.dart';
-import 'Pages/Health.dart';
+import 'Pages/services/location.dart';
+import 'Pages/health.dart';
 import 'Pages/news.dart';
 import 'Pages/profile.dart';
 
