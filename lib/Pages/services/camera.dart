@@ -20,8 +20,8 @@ class _CameraState extends State<Camera> {
     cameras = await availableCameras();
     firstCam = cameras[1];
     _controller = CameraController(
-        firstCam,
-        ResolutionPreset.medium,
+      firstCam,
+      ResolutionPreset.medium,
     );
     _initializeControllerFuture = _controller.initialize();
     setState(() {
@@ -29,15 +29,16 @@ class _CameraState extends State<Camera> {
     });
   }
   @override
-  void initState(){
+  void initState() {
     getCameras();
     super.initState();
   }
   @override
-  void dispose(){
+  void dispose() {
     _controller.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     ProfileData pd = ModalRoute.of(context)!.settings.arguments as ProfileData;
@@ -50,34 +51,30 @@ class _CameraState extends State<Camera> {
         children: [
           if (_isLoading) ...[
             const Center(child: CircularProgressIndicator())
-          ]
-          else ... [
+          ] else ...[
             FutureBuilder(
-              future: _initializeControllerFuture,
-              builder:  (context, snapshot){
-                if (snapshot.connectionState == ConnectionState.done){
-                  return CameraPreview(_controller);
-                }
-                else{
-                  return const Center(child: CircularProgressIndicator(),);
-                }
+                future: _initializeControllerFuture,
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.done) {
+                    return CameraPreview(_controller);
+                  } else {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                }),
+            FloatingActionButton(onPressed: () async {
+              try {
+                await _initializeControllerFuture;
+                XFile image = await _controller.takePicture();
+                pd.changeImage(image.path);
+                pd.writeFile();
+                if (!mounted) return;
+                Navigator.pop(context);
+              } catch (e) {
+                throw Exception(e);
               }
-            ),
-            FloatingActionButton(
-              onPressed: () async {
-                try {
-                  await _initializeControllerFuture;
-                  XFile image = await _controller.takePicture();
-                  pd.changeImage(image.path);
-                  pd.writeFile();
-                  if (!mounted) return;
-                  Navigator.pop(context);
-                }
-                catch(e){
-                  throw Exception(e);
-                }
-              }
-            ),
+            }),
           ]
         ],
       ),
