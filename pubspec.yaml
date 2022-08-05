@@ -45,6 +45,7 @@ dependencies:
   material_tag_editor: ^0.1.2
   geolocator: ^9.0.1
   map_launcher: ^2.2.3
+  expandable: ^5.0.1
 
 dev_dependencies:
   flutter_test:
