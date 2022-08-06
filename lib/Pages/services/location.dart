@@ -1,5 +1,4 @@
 // needs to add city state etc and hours of opperation
-import 'package:flutter/material.dart';
 
 class Location {
   Location(String _name, String _address, double _distance, String _image,

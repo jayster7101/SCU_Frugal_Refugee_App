@@ -1,5 +1,3 @@
-import 'dart:collection';
-
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'services/translateget.dart';
@@ -122,16 +120,6 @@ class _TranslateState extends State<Translate> {
                           if (saved.length > 30) {
                             saved.length = 30;
                           }
-                          /* showDialog(
-                          context: context, 
-                          builder: (context) => AlertDialog(
-                            title: const Text("Translated Text"),
-                            content: Text(query["data"]["translations"]["translatedText"]),
-                            actions: [
-                              TextButton(onPressed: () => Navigator.pop(context), child: const Text("Ok")),
-                            ],
-                          )
-                        ); */
                         });
                       }
                     },
@@ -158,7 +146,7 @@ class _TranslateState extends State<Translate> {
             Expanded(
               child: SingleChildScrollView(
                 child: ListView.builder(
-                    physics: BouncingScrollPhysics(),
+                    physics: const BouncingScrollPhysics(),
                     //scrollDirection: Axis.vertical,
                     shrinkWrap: true,
                     itemCount: saved.length,
@@ -171,13 +159,12 @@ class _TranslateState extends State<Translate> {
                                 tapBodyToCollapse: true,
                                 iconPadding: EdgeInsets.all(0)),
                             header: Padding(
-                                padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                                padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
                                 child: RichText(
                                   text: TextSpan(children: <TextSpan>[
                                     TextSpan(
-                                      text: saved[index].lang1.toUpperCase() +
-                                          ":", // Language From
-                                      style: TextStyle(
+                                      text: "${saved[index].lang1.toUpperCase()}:", // Language From
+                                      style: const TextStyle(
                                           fontFamily: 'Montserrat',
                                           fontSize: 16,
                                           color: Colors.black,
@@ -186,12 +173,12 @@ class _TranslateState extends State<Translate> {
                                     ),
                                     TextSpan(
                                       // pre translation
-                                      text: saved[index].late1_text.substring(
+                                      text: "${saved[index].late1_text.substring(
                                           0,
                                           saved[index].late1_text.length < 10
                                               ? saved[index].late1_text.length
-                                              : 10) + "...",
-                                      style: TextStyle(
+                                              : 10)}...",
+                                      style: const TextStyle(
                                           // post language
                                           fontFamily: 'Montserrat',
                                           fontSize: 16,
@@ -200,10 +187,8 @@ class _TranslateState extends State<Translate> {
                                     ),
                                     TextSpan(
                                       // post translation
-                                      text: "   " +
-                                          saved[index].lang2.toUpperCase() +
-                                          ":",
-                                      style: TextStyle(
+                                      text: "   ${saved[index].lang2.toUpperCase()}:",
+                                      style: const TextStyle(
                                           fontFamily: 'Montserrat',
                                           fontSize: 16,
                                           color: Colors.black,
@@ -211,12 +196,12 @@ class _TranslateState extends State<Translate> {
                                           overflow: TextOverflow.visible),
                                     ),
                                     TextSpan(
-                                      text: saved[index].late2_text.substring(
+                                      text: "${saved[index].late2_text.substring(
                                           0,
                                           saved[index].late1_text.length < 10
                                               ? saved[index].late1_text.length
-                                              : 10) + "...",
-                                      style: TextStyle(
+                                              : 10)}...",
+                                      style: const TextStyle(
                                           fontFamily: 'Montserrat',
                                           fontSize: 16,
                                           color: Colors.black,
@@ -224,16 +209,15 @@ class _TranslateState extends State<Translate> {
                                     ),
                                   ]),
                                 )),
-                            collapsed: SizedBox.shrink(),
+                            collapsed: const SizedBox.shrink(),
                             expanded:
 
                                 ///Expanded text
                                 RichText(
                               text: TextSpan(children: <TextSpan>[
                                 TextSpan(
-                                  text: saved[index].lang1.toUpperCase() +
-                                      ":", // Language From
-                                  style: TextStyle(
+                                  text: "${saved[index].lang1.toUpperCase()}:", // Language From
+                                  style: const TextStyle(
                                       fontFamily: 'Montserrat',
                                       fontSize: 16,
                                       color: Colors.blue,
@@ -243,7 +227,7 @@ class _TranslateState extends State<Translate> {
                                 TextSpan(
                                   // pre translation
                                   text: saved[index].late1_text,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       // post language
                                       fontFamily: 'Montserrat',
                                       fontSize: 16,
@@ -252,10 +236,8 @@ class _TranslateState extends State<Translate> {
                                 ),
                                 TextSpan(
                                   // post translation
-                                  text: "\n" +
-                                      saved[index].lang2.toUpperCase() +
-                                      ":",
-                                  style: TextStyle(
+                                  text: "\n${saved[index].lang2.toUpperCase()}:",
+                                  style: const TextStyle(
                                       fontFamily: 'Montserrat',
                                       fontSize: 16,
                                       color: Colors.blue,
@@ -264,7 +246,7 @@ class _TranslateState extends State<Translate> {
                                 ),
                                 TextSpan(
                                   text: saved[index].late2_text,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       fontFamily: 'Montserrat',
                                       fontSize: 16,
                                       color: Colors.black,
@@ -274,7 +256,7 @@ class _TranslateState extends State<Translate> {
                             ),
                             builder: (_, collapsed, expanded) {
                               return Padding(
-                                padding: EdgeInsets.only(
+                                padding: const EdgeInsets.only(
                                     left: 10, right: 10, bottom: 10),
                                 child: Expandable(
                                   collapsed: collapsed,
@@ -312,112 +294,11 @@ class Savedr {
     List<String> l = [];
 
     if (lang1.isNotEmpty || lang2.isNotEmpty) {
-      pre = "Language " + lang1 + ": " + late1_text;
-      post = "Language " + lang2 + ": " + late2_text;
+      pre = "Language $lang1: $late1_text";
+      post = "Language $lang2: $late2_text";
       l.add(pre);
       l.add(post);
     }
     return l;
   }
 }
-
-// class saved_lan extends StatelessWidget {
-//   const saved_lan({Key? key}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       child: ListView.builder(
-//         shrinkWrap: true,
-//           itemCount: saved.length,
-//           itemBuilder: ((context, index) {
-//             return Column(children: [
-//               ExpandablePanel(
-//                   theme: const ExpandableThemeData(
-//                       headerAlignment: ExpandablePanelHeaderAlignment.center,
-//                       tapBodyToCollapse: true,
-//                       iconPadding: EdgeInsets.all(0)),
-//                   header: Padding(
-//                     padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-//                     child: Text(
-//                       // gets pre formatted text and then displays the first index of
-//                       saved[index].format()[0],
-//                       style: TextStyle(
-//                           fontFamily: 'Montserrat',
-//                           fontSize: 16,
-//                           color: Colors.black,
-//                           fontWeight: FontWeight.bold,
-//                           overflow: TextOverflow.visible),
-//                     ),
-//                   ),
-//                   collapsed: SizedBox.shrink(),
-//                   expanded: Text(
-//                     "\u25cf After graduating from Ohlone College with an Associates degree in computer science I will continue my education by obtaining both a bachelors and masters degree in computer science/related fields. I aspire to attend Stanford or Berkeley as they are my dream schools.\n\u25cf Once graduted from my masters program, I will join a company and work full time. After a few years of experience I plan to switch to a more manegerial position in order to aquire a different set of skills.\n\u25cf Now with a background in programming and managment, I will venture off into my biggest aspiration of all, creating a business that truly contributes to the greater good of humainty",
-//                     style: TextStyle(
-//                         fontFamily: 'Montserrat',
-//                         fontSize: 16,
-//                         color: Colors.black,
-//                         overflow: TextOverflow.visible),
-//                   ),
-//                   builder: (_, collapsed, expanded) {
-//                     return Padding(
-//                       padding: EdgeInsets.only(left: 10, right: 10, bottom: 0),
-//                       child: Expandable(
-//                         collapsed: collapsed,
-//                         expanded: expanded,
-//                         theme: const ExpandableThemeData(crossFadePoint: 0),
-//                       ),
-//                     );
-//                   }),
-//             ]);
-//           })),
-//     );
-//   }
-// }
-
-//  ListView.builder(
-//               scrollDirection: Axis.vertical,
-
-//         shrinkWrap: true,
-//           itemCount: saved.length,
-//           itemBuilder: ((context, index) {
-//             return Column(children: [
-//               ExpandablePanel(
-//                   theme: const ExpandableThemeData(
-//                       headerAlignment: ExpandablePanelHeaderAlignment.center,
-//                       tapBodyToCollapse: true,
-//                       iconPadding: EdgeInsets.all(0)),
-//                   header: Padding(
-//                     padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-//                     child: Text(
-//                       // gets pre formatted text and then displays the first index of
-//                       saved[index].format()[0].substring(4),
-//                       style: TextStyle(
-//                           fontFamily: 'Montserrat',
-//                           fontSize: 16,
-//                           color: Colors.black,
-//                           fontWeight: FontWeight.bold,
-//                           overflow: TextOverflow.visible),
-//                     ),
-//                   ),
-//                   collapsed: SizedBox.shrink(),
-//                   expanded: Text(
-//                     "\u25cf After graduating from Ohlone College with an Associates degree in computer science I will continue my education by obtaining both a bachelors and masters degree in computer science/related fields. I aspire to attend Stanford or Berkeley as they are my dream schools.\n\u25cf Once graduted from my masters program, I will join a company and work full time. After a few years of experience I plan to switch to a more manegerial position in order to aquire a different set of skills.\n\u25cf Now with a background in programming and managment, I will venture off into my biggest aspiration of all, creating a business that truly contributes to the greater good of humainty",
-//                     style: TextStyle(
-//                         fontFamily: 'Montserrat',
-//                         fontSize: 16,
-//                         color: Colors.black,
-//                         overflow: TextOverflow.visible),
-//                   ),
-//                   builder: (_, collapsed, expanded) {
-//                     return Padding(
-//                       padding: EdgeInsets.only(left: 10, right: 10, bottom: 0),
-//                       child: Expandable(
-//                         collapsed: collapsed,
-//                         expanded: expanded,
-//                         theme: const ExpandableThemeData(crossFadePoint: 0),
-//                       ),
-//                     );
-//                   }),
-//             ]);
-//           })),

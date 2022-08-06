@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:starter/Pages/Health_Locations.dart';
-import 'package:starter/functions/get_pharamacy_location.dart';
+import 'package:starter/Pages/services/healthlocations.dart';
 
 class Health extends StatelessWidget {
   const Health({Key? key}) : super(key: key);
@@ -12,7 +9,7 @@ class Health extends StatelessWidget {
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
-            title: Text("Health"),
+            title: const Text("Health"),
             backgroundColor: Colors.redAccent,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12))),
@@ -24,7 +21,7 @@ class Health extends StatelessWidget {
             alignment: WrapAlignment.spaceBetween,
             //mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Container(
+              SizedBox(
                   height:
                       120, // sets height to 120 and width will be size of screen taking padding into consideration
                   child: SizedBox(
@@ -37,7 +34,7 @@ class Health extends StatelessWidget {
                               width: 2,
                               style: BorderStyle.solid),
                           primary: Colors.white,
-                          textStyle: TextStyle(fontSize: 40),
+                          textStyle: const TextStyle(fontSize: 40),
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(12))),
                       child: const Text(
@@ -54,7 +51,7 @@ class Health extends StatelessWidget {
                       },
                     ),
                   )),
-              Container(
+              SizedBox(
                   height:
                       120, // sets height to 120 and width will be size of screen taking padding into consideration
                   child: SizedBox(
@@ -67,7 +64,7 @@ class Health extends StatelessWidget {
                               width: 2,
                               style: BorderStyle.solid),
                           primary: Colors.white,
-                          textStyle: TextStyle(fontSize: 40),
+                          textStyle: const TextStyle(fontSize: 40),
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(12))),
                       child: const Text(
@@ -84,7 +81,7 @@ class Health extends StatelessWidget {
                       },
                     ),
                   )),
-              Container(
+              SizedBox(
                   height:
                       120, // sets height to 120 and width will be size of screen taking padding into consideration
                   child: SizedBox(
@@ -97,7 +94,7 @@ class Health extends StatelessWidget {
                               width: 2,
                               style: BorderStyle.solid),
                           primary: Colors.white,
-                          textStyle: TextStyle(fontSize: 40),
+                          textStyle: const TextStyle(fontSize: 40),
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(12))),
                       child: const Text(
@@ -114,7 +111,7 @@ class Health extends StatelessWidget {
                       },
                     ),
                   )),
-              Container(
+              SizedBox(
                   height:
                       120, // sets height to 120 and width will be size of screen taking padding into consideration
                   child: SizedBox(
@@ -127,7 +124,7 @@ class Health extends StatelessWidget {
                               width: 2,
                               style: BorderStyle.solid),
                           primary: Colors.white,
-                          textStyle: TextStyle(fontSize: 40),
+                          textStyle: const TextStyle(fontSize: 40),
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(12))),
                       child: const Text(
@@ -144,7 +141,7 @@ class Health extends StatelessWidget {
                       },
                     ),
                   )),
-              Container(
+              SizedBox(
                   height:
                       120, // sets height to 120 and width will be size of screen taking padding into consideration
                   child: SizedBox(
@@ -157,7 +154,7 @@ class Health extends StatelessWidget {
                               width: 2,
                               style: BorderStyle.solid),
                           primary: Colors.white,
-                          textStyle: TextStyle(fontSize: 40),
+                          textStyle: const TextStyle(fontSize: 40),
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(12))),
                       child: const Text(
