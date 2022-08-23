@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'services/translateget.dart';
 import 'services/languages.dart';
 
-List<Savedr> saved = [];
+List<Savedr> saved = []; //[Savedr("En", "Hello", "ES", "Hola")];
+//int index = 0;
 
 class Translate extends StatefulWidget {
   const Translate({Key? key}) : super(key: key);
@@ -33,6 +34,7 @@ class _TranslateState extends State<Translate> {
   void dispose() {
     _controller.dispose();
     super.dispose();
+    saved.length = 0;
   }
 
   TranslateGet t = TranslateGet();
@@ -102,25 +104,33 @@ class _TranslateState extends State<Translate> {
                         });
                         lang1 = langMap[firstDropdownValue]!;
                         lang2 = langMap[secondDropdownValue]!;
-                        t
-                            .getTranslate(_controller.text, lang1, lang2)
-                            .then((a) {
-                          query = a;
-                          setState(() {
-                            isLoading = false;
+                        try {
+                          t
+                              .getTranslate(_controller.text, lang1, lang2)
+                              .then((a) {
+                            query = a;
+                            setState(() {
+                              isLoading = false;
+                            });
+                            if (query.isNotEmpty) {
+                              saved.insert(
+                                  0,
+                                  Savedr(
+                                      lang1,
+                                      lang2,
+                                      _controller.text,
+                                      query["data"]["translations"]
+                                          ["translatedText"]));
+                              if (saved.length > 30) {
+                                saved.length = 30;
+                              }
+                            } else {
+                              print(saved.length);
+                            }
                           });
-                          saved.insert(
-                              0,
-                              Savedr(
-                                  lang1,
-                                  lang2,
-                                  _controller.text,
-                                  query["data"]["translations"]
-                                      ["translatedText"]));
-                          if (saved.length > 30) {
-                            saved.length = 30;
-                          }
-                        });
+                        } catch (e) {
+                          print("error with translation");
+                        }
                       }
                     },
                     child: const Text("Submit"),
@@ -138,7 +148,7 @@ class _TranslateState extends State<Translate> {
                           style: const TextStyle(fontSize: 40),
                         ),
                       ),
-                    ]
+                    ],
                   ],
                 ],
               ),
@@ -163,7 +173,8 @@ class _TranslateState extends State<Translate> {
                                 child: RichText(
                                   text: TextSpan(children: <TextSpan>[
                                     TextSpan(
-                                      text: "${saved[index].lang1.toUpperCase()}:", // Language From
+                                      text:
+                                          "${saved[index].lang1.toUpperCase()}:", // Language From
                                       style: const TextStyle(
                                           fontFamily: 'Montserrat',
                                           fontSize: 16,
@@ -173,11 +184,8 @@ class _TranslateState extends State<Translate> {
                                     ),
                                     TextSpan(
                                       // pre translation
-                                      text: "${saved[index].late1_text.substring(
-                                          0,
-                                          saved[index].late1_text.length < 10
-                                              ? saved[index].late1_text.length
-                                              : 10)}...",
+                                      text:
+                                          "${saved[index].late1_text.substring(0, saved[index].late1_text.length < 10 ? saved[index].late1_text.length : 10)}...",
                                       style: const TextStyle(
                                           // post language
                                           fontFamily: 'Montserrat',
@@ -187,7 +195,8 @@ class _TranslateState extends State<Translate> {
                                     ),
                                     TextSpan(
                                       // post translation
-                                      text: "   ${saved[index].lang2.toUpperCase()}:",
+                                      text:
+                                          "   ${saved[index].lang2.toUpperCase()}:",
                                       style: const TextStyle(
                                           fontFamily: 'Montserrat',
                                           fontSize: 16,
@@ -196,11 +205,8 @@ class _TranslateState extends State<Translate> {
                                           overflow: TextOverflow.visible),
                                     ),
                                     TextSpan(
-                                      text: "${saved[index].late2_text.substring(
-                                          0,
-                                          saved[index].late1_text.length < 10
-                                              ? saved[index].late1_text.length
-                                              : 10)}...",
+                                      text:
+                                          "${saved[index].late2_text.substring(0, saved[index].late2_text.length < 10 ? saved[index].late2_text.length : 10)}...",
                                       style: const TextStyle(
                                           fontFamily: 'Montserrat',
                                           fontSize: 16,
@@ -216,7 +222,8 @@ class _TranslateState extends State<Translate> {
                                 RichText(
                               text: TextSpan(children: <TextSpan>[
                                 TextSpan(
-                                  text: "${saved[index].lang1.toUpperCase()}:", // Language From
+                                  text:
+                                      "${saved[index].lang1.toUpperCase()}:", // Language From
                                   style: const TextStyle(
                                       fontFamily: 'Montserrat',
                                       fontSize: 16,
@@ -236,7 +243,8 @@ class _TranslateState extends State<Translate> {
                                 ),
                                 TextSpan(
                                   // post translation
-                                  text: "\n${saved[index].lang2.toUpperCase()}:",
+                                  text:
+                                      "\n${saved[index].lang2.toUpperCase()}:",
                                   style: const TextStyle(
                                       fontFamily: 'Montserrat',
                                       fontSize: 16,
@@ -299,6 +307,7 @@ class Savedr {
       l.add(pre);
       l.add(post);
     }
+
     return l;
   }
 }
